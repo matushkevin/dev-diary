@@ -1,0 +1,174 @@
+/* ============================================
+   NAVBAR BASE STYLES
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Keeps it above everything else */
+  height: var(--navbar-height);
+  background-color: transparent;
+  transition: background-color var(--transition-base), 
+              backdrop-filter var(--transition-base),
+              border-color var(--transition-base);
+  border-bottom: 1px solid transparent;
+}
+
+/* This class gets added by React when we scroll down */
+.navbar-scrolled {
+  background-color: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(12px); /* The frosted glass effect */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar-container {
+  max-width: var(--max-width);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* === LOGO === */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: var(--color-text-primary);
+  transition: opacity var(--transition-fast);
+}
+
+.navbar-logo:hover {
+  opacity: 0.8;
+}
+
+.logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-aurora);
+  color: white;
+  font-weight: 700;
+  font-size: var(--text-lg);
+}
+
+.logo-dot {
+  color: var(--color-accent-blue);
+}
+
+/* === DESKTOP NAV LINKS === */
+.navbar-links {
+  display: flex;
+  gap: var(--space-8);
+  list-style: none;
+}
+
+.navbar-link {
+  position: relative;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.navbar-link:hover {
+  color: var(--color-text-primary);
+}
+
+/* The animated underline effect */
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0; /* Starts hidden */
+  height: 2px;
+  background: var(--gradient-aurora);
+  transition: width var(--transition-base);
+}
+
+.navbar-link:hover::after {
+  width: 100%; /* Expands on hover */
+}
+
+/* === ACTIONS (Theme & Hamburger) === */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.theme-toggle,
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+/* Hide the hamburger on desktop */
+.menu-toggle {
+  display: none; 
+}
+
+/* === MOBILE MENU === */
+.mobile-menu {
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-menu-links {
+  list-style: none;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.mobile-menu-link {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.mobile-menu-link:hover {
+  color: var(--color-text-primary);
+}
+
+/* === RESPONSIVE (Mobile view) === */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Hide desktop links on small screens */
+  }
+  
+  .menu-toggle {
+    display: flex; /* Show hamburger on small screens */
+  }
+
+  .logo-text {
+    font-size: var(--text-base);
+  }
+}
