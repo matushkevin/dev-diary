@@ -1,0 +1,99 @@
+/* SKILLS SECTION */
+
+.skills-section {
+  background-color: var(--color-bg);
+  position: relative;
+}
+
+/* GRID LAYOUT */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+/* SKILL CARD */
+.skill-card {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* The glowing hover effect */
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gradient-aurora);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 10px 30px rgba(79, 124, 255, 0.1);
+}
+
+.skill-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* CARD HEADER */
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.category-icon {
+  color: var(--color-accent-blue);
+}
+
+.skill-card-header h3 {
+  font-size: var(--text-xl);
+  color: var(--color-text-primary);
+}
+
+/* SKILL LIST */
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+/* The little gradient dot next to each skill */
+.skill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gradient-aurora);
+  flex-shrink: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: 1fr; /* Stack into 1 column on tablets/phones */
+  }
+}
