@@ -1,0 +1,28 @@
+/* === LEFT SIDE: IMAGE === */
+.about-image-wrapper {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* The glow behind the image */
+.about-image-glow {
+  position: absolute;
+  inset: -20px;
+  background: var(--gradient-aurora);
+  filter: blur(40px);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* The Actual Image */
+.about-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5; /* Portrait ratio looks best for headshots */
+  object-fit: cover; /* Prevents the image from squishing */
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  z-index: 1; /* Sits above the glow */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
